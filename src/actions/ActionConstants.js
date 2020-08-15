@@ -1,0 +1,6 @@
+export const FETCHING_DATA = "FETCHING_DATA"
+export const FETCH_INPROGRESS = "FETCH_INPROGRESS"
+export const FETCH_DONE = "FETCH_DONE"
+export const FETCH_ERROR = "FETCH_ERROR"
+export const NEWS_CLICKED = "NEWS_CLICKED"
+
