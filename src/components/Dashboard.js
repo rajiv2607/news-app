@@ -5,36 +5,48 @@ import * as actions from "../actions/Actions"
 import Card from './Card'
 import Loader from './Loader'
 import Navigator from './Navigator'
-import WeatherComponent from './WeatherComponent'
-import LeftCompoenent from './LeftCompoenent'
-import Footer from './Footer';
+import Error from './Error'
 
 export class DashBoard extends React.Component {
 
+    state={
+        errorOccured : false
+    }
+    
     componentDidMount() {
         store.dispatch(actions.fetchData())
     }
 
+    componentDidCatch() {
+        this.setState({
+            errorOccured : true
+        })
+    }
+
     render() {
 
-        {
-            if (this.props.isloading) {
+                if (this.props.isloading) { 
                 return (
                     <>
                         <Loader />
                     </>
                 )
+            } else if(this.state.errorOccured) {
+                return(
+                    <Error/>
+                )
+            }else{
+                return (
+                    <>
+                        <Navigator />
+                        <Card fetchedNews={this.props.fetchedData || []} />
+                    </>
+                )
             }
-        }
-
-        return (
-            <>
-                <Navigator />
-                <Card fetchedData={this.props.fetchedData} />
-            </>
-        )
     }
 }
+
+
 
 
 const mapStateToProps = state => {
@@ -43,21 +55,18 @@ const mapStateToProps = state => {
         fetchedData: state.fetchedData,
         isloading: state.isloading
     };
+};          
+
+const mapDispatchToProps = dispatch => {
+    return {
+        // inc: () => {
+        //     dispatch(actions.incrementAsync());
+        // },
+
+        // dec: () => {
+        //     dispatch(actions.decrement());
+        // }
+    };
 };
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         // inc: () => {
-//         //     dispatch(actions.incrementAsync());
-//         // },
-
-//         // dec: () => {
-//         //     dispatch(actions.decrement());
-//         // }
-//     };
-// };
-
-export default connect(
-    mapStateToProps,
-    null
-)(DashBoard);
+export default connect(mapStateToProps)(DashBoard);

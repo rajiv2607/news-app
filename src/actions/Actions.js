@@ -23,7 +23,9 @@ export function fetchError(error) {
 }
 
 export function fetchTechNews(){
+    
     return{
+        
         type: Actions.FETCH_TECH
     }
 }
@@ -44,7 +46,6 @@ export function fetchAppleNews(){
 
 
 export function fetchedApplehNews(articles) {
-    console.log(articles,"in action")
     return {
         type: Actions.FETCH_APPLE_SUCCESS,
         articles

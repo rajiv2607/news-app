@@ -6,55 +6,65 @@ let initialState = {
     isloading: true,
     errorOccured: false,
     fetchTechNews : [],
-    fetchAppleNews : []
+    fetchAppleNews : [],
+    isTechnewloading : true,
+    isAppleNewsLoading : true
+
 };
 
 export default function newsReducer(state = initialState, action) {
     switch (action.type) {
         case Actions.FETCH_DONE: {
-            state.fetchedData = action.articles
-            state.isloading = false
+            var newState = Object.assign({}, state);
+            newState.fetchedData = action.articles
+            newState.isloading = false
             return {
-                ...state
+                ...newState
             }
         }
 
         case Actions.FETCH_ERROR: {
-            state.errorOccured = true
+            var newState = Object.assign({}, state);
+            newState.errorOccured = true
             return {
-                ...state
+                ...newState
             }
         }
 
         case Actions.FETCH_TECH_SUCCESS:{
-            state.fetchTechNews = action.articles
+            var newState = Object.assign({}, state);
+            newState.isTechnewloading = false
+            newState.fetchTechNews = action.articles
             return {
-                ...state
+                ...newState
             }
         }
 
         case Actions.FETCH_TECH_ERROR:{
-            state.errorOccured = true
+            var newState = Object.assign({}, state);
+            newState.errorOccured = true
             return {
-                ...state
+                ...newState
             }
         }
 
         case Actions.FETCH_APPLE_SUCCESS:{
-            state.fetchAppleNews = action.articles
+            var newState = Object.assign({}, state);
+            newState.isAppleNewsLoading = false
+            newState.fetchAppleNews = action.articles
             return {
-                ...state
+                ...newState
             }
         }
 
         case Actions.FETCH_APPLE_ERROR:{
-            state.errorOccured = true
+            var newState = Object.assign({}, state);
+            newState.errorOccured = true
             return {
-                ...state
+                ...newState
             }
         }
-
         default:
-            return state;
+            return {...state}
     }
 }

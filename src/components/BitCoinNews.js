@@ -38,7 +38,6 @@ export class BitCoinNews extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state, "state ..........")
     return {
         fetchTechNews: state.fetchTechNews,
     };

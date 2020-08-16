@@ -19,7 +19,7 @@ class Navigator extends React.Component {
         return (
             <>
                 <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">News Today</Navbar.Brand>
+                    <Navbar.Brand >Latest News</Navbar.Brand>
                     <Button variant="primary">
                         Top <Badge variant="light">Headlines</Badge>
                         <span className="sr-only">unread messages</span>

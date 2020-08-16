@@ -1,9 +1,9 @@
 import React from 'react'
-import Dashboard, { DashBoard }  from "./components/Dashboard";
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import TechNews from './components/TechNews'
 import AppleNews  from './components/AppleNews';
-import LeftCompoenent from './components/LeftCompoenent';
+import  DashBoard  from './components/Dashboard';
+
 class App extends React.Component {
   render() {
     return (

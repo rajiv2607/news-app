@@ -3,29 +3,42 @@ import { connect } from 'react-redux'
 import Card from './Card'
 import Header from './Header'
 import Footer from './Footer'
-
+import Loader from './Loader'
 export class AppleNews extends Component {
 
+
+
     render() {
-        return (
-            <div>
+
+        if (this.props.isAppleNewsLoading) {
+            return (
+                <>
+                    <Loader />
+                </>
+            )
+        } else {
+            return (
                 <div>
-                   <Header heading= "Latest Apple News for you .."/>
+                    <div>
+                        <Header heading="Latest Apple News for you .." />
+                    </div>
+                    <div className='technews-container'>
+                        <Card fetchedNews={this.props.fetchAppleNews} ></Card>
+                    </div>
+                    <div>
+                        <Footer />
+                    </div>
                 </div>
-                <div className='technews-container'>
-                    <Card fetchedData={this.props.fetchAppleNews} ></Card>
-                </div>
-                <div>
-                    <Footer/>
-                </div>
-            </div>
-        )
+            )
+        }
+
     }
 }
 
 const mapStateToProps = state => {
     return {
-        fetchAppleNews: state.fetchAppleNews
+        fetchAppleNews: state.fetchAppleNews,
+        isAppleNewsLoading: state.isAppleNewsLoading
     };
 };
 

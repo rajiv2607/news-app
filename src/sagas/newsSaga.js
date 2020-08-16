@@ -1,4 +1,4 @@
-import { delay, put, takeEvery, call } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects'
 import * as Actions from '../actions/ActionConstants'
 import { fetchData, fetchTech , fetchApple} from '../resources/fetchApi'
 
@@ -26,7 +26,6 @@ export function* fetchTechNews() {
 
 export function* fetchAppleNews() {
     const { articles, status } = yield call(fetchApple);
-    console.log(articles, status, "Rajiv")
     if (isError(status)) {
         yield put({ type: Actions.FETCH_APPLE_ERROR, status });
     }

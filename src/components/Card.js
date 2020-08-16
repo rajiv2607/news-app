@@ -4,18 +4,17 @@ import {Badge} from 'react-bootstrap'
 class Card extends React.Component {
 
     normalizeDate(timestamp) {
-        let date = timestamp.split("T")
+        let time = timestamp.split("T")
         return (
-            "Time : " + date[0] + "      " + date[1].substr(0, date[1].length - 1)
+            "Updated on: " + time[0] + "      " + time[1].substr(0, time[1].length - 1)
         )
     }
 
     render() {
         return (
-
             <div className='news-container'>
                 {
-                    this.props.fetchedData.map((data, index) => {
+                    this.props.fetchedNews.map((data) => {
                         return (
                             <div class="card mb-3" style={{ "max-width": "75rem", "box-shadow": "1px 1px 1px" }}>
                                 <div class="row no-gutters">
@@ -31,7 +30,7 @@ class Card extends React.Component {
                                                 <p class="card-text"><small class="text-muted">{this.normalizeDate(data.publishedAt)}</small></p>
                                             </Badge>{' '}
                                             <Badge pill variant="light">
-                                                {data.author}
+                                                {"Author: "+data.author}
                                             </Badge>{' '}
                                         </div>
                                     </div>
