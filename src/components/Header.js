@@ -1,24 +1,13 @@
-import React from 'react'
-import { Navbar, Form, FormControl, Button, Badge } from 'react-bootstrap';
-
-class Header extends React.Component {
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import {Alert} from 'react-bootstrap'
+export default class Header extends Component {
     render() {
         return (
-            <>
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">News Today</Navbar.Brand>
-                    <Button variant="primary">
-                        Top <Badge variant="light">Headlines</Badge>
-                        <span className="sr-only">unread messages</span>
-                    </Button>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search" class="mr-sm-2" id='searchBar'/>
-                        <Button variant="outline-light">Search</Button>
-                    </Form>
-                </Navbar>
-            </>
+            <div>
+                 <Alert className ='headers-view'variant='secondary'>{this.props.heading}</Alert>
+                    <Alert className='back-to-home'><Link to='/'> Back to home</Link></Alert>
+            </div>
         )
     }
 }
-
-export default Header

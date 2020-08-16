@@ -4,7 +4,9 @@ import * as Actions from "../actions/ActionConstants";
 let initialState = {
     fetchedData: [],
     isloading: true,
-    errorOccured: false
+    errorOccured: false,
+    fetchTechNews : [],
+    fetchAppleNews : []
 };
 
 export default function newsReducer(state = initialState, action) {
@@ -19,7 +21,34 @@ export default function newsReducer(state = initialState, action) {
 
         case Actions.FETCH_ERROR: {
             state.errorOccured = true
+            return {
+                ...state
+            }
+        }
 
+        case Actions.FETCH_TECH_SUCCESS:{
+            state.fetchTechNews = action.articles
+            return {
+                ...state
+            }
+        }
+
+        case Actions.FETCH_TECH_ERROR:{
+            state.errorOccured = true
+            return {
+                ...state
+            }
+        }
+
+        case Actions.FETCH_APPLE_SUCCESS:{
+            state.fetchAppleNews = action.articles
+            return {
+                ...state
+            }
+        }
+
+        case Actions.FETCH_APPLE_ERROR:{
+            state.errorOccured = true
             return {
                 ...state
             }

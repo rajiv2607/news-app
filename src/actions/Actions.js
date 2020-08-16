@@ -21,3 +21,32 @@ export function fetchError(error) {
        error
     }
 }
+
+export function fetchTechNews(){
+    return{
+        type: Actions.FETCH_TECH
+    }
+}
+
+
+export function fetchedTechNews(articles) {
+    return {
+        type: Actions.FETCH_TECH_SUCCESS,
+        articles
+    }
+}
+
+export function fetchAppleNews(){
+    return{
+        type: Actions.FETCH_APPLE
+    }
+}
+
+
+export function fetchedApplehNews(articles) {
+    console.log(articles,"in action")
+    return {
+        type: Actions.FETCH_APPLE_SUCCESS,
+        articles
+    }
+}

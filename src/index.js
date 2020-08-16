@@ -5,6 +5,8 @@ import Dashboard from "./components/Dashboard";
 import store from "./store/store";
 import "bootstrap/dist/css/bootstrap.css";
 import './resources/style.scss'
+import App from './App'
 
-ReactDOM.render(<Provider store={store}><Dashboard /></Provider>, document.getElementById('root'));
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

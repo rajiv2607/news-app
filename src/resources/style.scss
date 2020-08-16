@@ -9,20 +9,13 @@
     background-color: red;
     display: flex;
     flex-direction: column;
-    width: 34rem;
     margin-left: 2.5rem;
     min-height: 10rem;
-
-    .child{
-        align-self: center;
+    margin-right: 2.5rem;
+    min-height: 60rem;
     display: flex;
-    flex-direction: row;
-    height: 5.25rem;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    position: relative;
-    width: 100%;
-    }
+    flex-direction: column;
+    width: 34rem;
 }
 
 // width: 19rem;
@@ -45,7 +38,15 @@
     width: 300px;
     top: -158rem;  }
   
-  .fa-cloud-rain {
+    .technews-container {
+        display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 49px;
+    margin: 3px;
+    margin-bottom: 3px;
+    }
+   .fa-cloud-rain {
     font-size: 150px;
     background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
     -webkit-background-clip: text;
@@ -64,7 +65,7 @@
   }
   p {
     margin: 0;
-    color: #fb8788;
+    color: #252020;
   }
   
   .temperature {
@@ -78,6 +79,15 @@
     }
  }
 
+ .headers-view {
+    font-size: large;
+    font-weight: bold;
+ }
+ .back-to-home {
+    color: orange !important;
+    font-size: larger;
+    padding: inherit;
+ }
 
  .card-title{
      &:hover{

@@ -4,9 +4,10 @@ import store from '../store/store';
 import * as actions from "../actions/Actions"
 import Card from './Card'
 import Loader from './Loader'
-import Header from './Header'
+import Navigator from './Navigator'
 import WeatherComponent from './WeatherComponent'
 import LeftCompoenent from './LeftCompoenent'
+import Footer from './Footer';
 
 export class DashBoard extends React.Component {
 
@@ -28,11 +29,8 @@ export class DashBoard extends React.Component {
 
         return (
             <>
-                <Header />
-               
+                <Navigator />
                 <Card fetchedData={this.props.fetchedData} />
-                <WeatherComponent/>
-                {/* <LeftCompoenent/> */}
             </>
         )
     }
@@ -40,7 +38,6 @@ export class DashBoard extends React.Component {
 
 
 const mapStateToProps = state => {
-    console.log(state, "state")
     return {
         currentState: state,
         fetchedData: state.fetchedData,
