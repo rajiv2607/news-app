@@ -51,3 +51,18 @@ export function fetchedApplehNews(articles) {
         articles
     }
 }
+
+export function searchByKeyWord(keyword){
+    return{
+        type: Actions.SEARCH_KEYWORD,
+        keyword
+    }
+}
+
+
+export function searchByKeyWordResult(articles) {
+    return {
+        type: Actions.FETCH_APPLE_SUCCESS,
+        articles
+    }
+}

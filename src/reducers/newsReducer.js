@@ -8,7 +8,8 @@ let initialState = {
     fetchTechNews : [],
     fetchAppleNews : [],
     isTechnewloading : true,
-    isAppleNewsLoading : true
+    isAppleNewsLoading : true,
+    searchResult : []
 
 };
 
@@ -50,16 +51,25 @@ export default function newsReducer(state = initialState, action) {
 
         case Actions.FETCH_APPLE_SUCCESS:{
             var newState = Object.assign({}, state);
-            newState.isAppleNewsLoading = false
-            newState.fetchAppleNews = action.articles
+            newState.searchResult = action.articles
             return {
                 ...newState
             }
         }
 
+
+
         case Actions.FETCH_APPLE_ERROR:{
             var newState = Object.assign({}, state);
             newState.errorOccured = true
+            return {
+                ...newState
+            }
+        }
+
+        case Actions.SEARCH_KEYWORD_SUCCESS:{
+            var newState = Object.assign({}, state);
+            newState.searchResult = action.articles
             return {
                 ...newState
             }

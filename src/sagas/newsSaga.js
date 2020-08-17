@@ -1,11 +1,12 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 import * as Actions from '../actions/ActionConstants'
-import { fetchData, fetchTech , fetchApple} from '../resources/fetchApi'
+import { fetchData, fetchTech , fetchApple, getSearchData} from '../resources/fetchApi'
 
 
 function isError(status) {
     return (status === "error") ? true : false
 }
+
 
 export function* fetchApi() {
     const { articles, status } = yield call(fetchData);
@@ -14,7 +15,6 @@ export function* fetchApi() {
     }
     yield put({ type: Actions.FETCH_DONE, articles });
 }
-
 
 export function* fetchTechNews() {
     const { articles, status } = yield call(fetchTech);
@@ -32,9 +32,17 @@ export function* fetchAppleNews() {
     yield put({ type: Actions.FETCH_APPLE_SUCCESS, articles });
 }
 
+export function* searchNyKeyWord(action) {
+    const { articles, status } = yield call(getSearchData,action.keyword);
+    if (isError(status)) {
+        yield put({ type: Actions.SEARCH_KEYWORD_ERROR, status });
+    }
+    yield put({ type: Actions.SEARCH_KEYWORD_SUCCESS, articles });
+}
+
 export default function* newsSaga() {
     yield takeEvery(Actions.FETCHING_DATA, fetchApi)
     yield takeEvery(Actions.FETCH_TECH, fetchTechNews)
     yield takeEvery(Actions.FETCH_APPLE, fetchAppleNews)
-
+    yield takeEvery(Actions.SEARCH_KEYWORD, searchNyKeyWord)
 }

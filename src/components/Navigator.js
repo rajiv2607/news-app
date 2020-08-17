@@ -3,8 +3,21 @@ import { Navbar, Form, FormControl, Button, Badge, Nav } from 'react-bootstrap';
 import store from '../store/store';
 import * as actions from "../actions/Actions"
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import ListView from './ListView';
 
 class Navigator extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleKeyWordSearch = this.handleKeyWordSearch.bind(this)
+        this.debouncing = this.debouncing.bind(this)
+        this.handleAppleNewsClick = this.handleAppleNewsClick.bind(this)
+        this.handleTechNewsClick = this.handleTechNewsClick.bind(this)
+        this.state = {
+            currentKeyWord: ''
+        }
+    }
 
     handleTechNewsClick() {
         store.dispatch(actions.fetchTechNews())
@@ -14,6 +27,32 @@ class Navigator extends React.Component {
         store.dispatch(actions.fetchAppleNews())
     }
 
+
+    debouncing(callback) {
+        let timing = 0
+        console.log("Dobouncung ")
+        return function () {
+            if (timing) {
+                clearTimeout(timing)
+            }
+
+            timing = setTimeout(() => {
+                callback()
+            }, 1000)
+        }
+    }
+
+
+
+    handleKeyWordSearch(event) {
+        let keyword = event.target.value
+        this.setState({
+            currentKeyWord: event.target.value
+        })
+
+        this.props.sentSearchReq(keyword)
+
+    }
 
     render() {
         return (
@@ -25,17 +64,44 @@ class Navigator extends React.Component {
                         <span className="sr-only">unread messages</span>
                     </Button>
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" class="mr-sm-2" id='searchBar' />
+                        <input ref={this.search} type="text" placeholder="Search" class="mr-sm-2" id='searchBar' onChange={this.handleKeyWordSearch} />
                         <Button variant="outline-light">Search</Button>
                     </Form>
+
                     <Nav className="mr-auto">
-                    <Button variant="dark" ><Link to="/apple-news"  onClick={this.handleAppleNewsClick}  > Apple News</Link></Button>
-                    <Button variant="dark" ><Link to="/technology-news"  onClick={this.handleTechNewsClick} > Tchnology News</Link></Button>
+                        <Button variant="dark" ><Link to="/apple-news" onClick={this.handleAppleNewsClick}  > Apple News</Link></Button>
+                        <Button variant="dark" ><Link to="/technology-news" onClick={this.handleTechNewsClick} > Tchnology News</Link></Button>
                     </Nav>
+
                 </Navbar>
+                {
+                    <div className='suggestion-container'>
+                        {
+                            (this.props.searchResult || this.state.currentKeyWord.length > 0) ? <ListView serchData={this.props.searchResult} /> : null
+                        }
+                    </div>
+                }
             </>
         )
     }
 }
 
-export default Navigator
+const mapStateToProps = state => {
+    return {
+        searchResult: state.searchResult,
+    };
+};
+
+
+const mapdispatchtoprops = dispatch => {
+    return {
+        sentSearchReq: (keyword) => {
+            dispatch({
+                type: "SEARCH_KEYWORD",
+                keyword
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapdispatchtoprops)(Navigator)

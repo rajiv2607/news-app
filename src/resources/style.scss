@@ -17,7 +17,27 @@
     flex-direction: column;
     width: 34rem;
 }
+.suggestion-container{
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    left: 17%;
+    right: 31%;
+    width: 55rem;
+}
 
+.search{
+    width: 55rem;
+    background: #e9e9e9;
+    padding: 3px;
+    border: 1px solid black;
+
+    &:hover{
+        background: white;
+    }
+}
 // width: 19rem;
 //     left: 81%;
 //     position: absolute;
