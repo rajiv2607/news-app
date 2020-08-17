@@ -60,9 +60,10 @@ export function searchByKeyWord(keyword){
 }
 
 
-export function searchByKeyWordResult(articles) {
+export function searchByKeyWordResult(articles,status) {
     return {
-        type: Actions.FETCH_APPLE_SUCCESS,
-        articles
+        type: Actions.SEARCH_KEYWORD_SUCCESS,
+        articles,
+        status
     }
 }

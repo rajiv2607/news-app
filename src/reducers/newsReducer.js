@@ -9,7 +9,7 @@ let initialState = {
     fetchAppleNews : [],
     isTechnewloading : true,
     isAppleNewsLoading : true,
-    searchResult : []
+    searchResult : [[],{}]
 
 };
 
@@ -25,7 +25,7 @@ export default function newsReducer(state = initialState, action) {
         }
 
         case Actions.FETCH_ERROR: {
-            var newState = Object.assign({}, state);
+            let newState = Object.assign({}, state);
             newState.errorOccured = true
             return {
                 ...newState
@@ -33,7 +33,7 @@ export default function newsReducer(state = initialState, action) {
         }
 
         case Actions.FETCH_TECH_SUCCESS:{
-            var newState = Object.assign({}, state);
+            let newState = Object.assign({}, state);
             newState.isTechnewloading = false
             newState.fetchTechNews = action.articles
             return {
@@ -42,7 +42,7 @@ export default function newsReducer(state = initialState, action) {
         }
 
         case Actions.FETCH_TECH_ERROR:{
-            var newState = Object.assign({}, state);
+            let newState = Object.assign({}, state);
             newState.errorOccured = true
             return {
                 ...newState
@@ -50,8 +50,9 @@ export default function newsReducer(state = initialState, action) {
         }
 
         case Actions.FETCH_APPLE_SUCCESS:{
-            var newState = Object.assign({}, state);
-            newState.searchResult = action.articles
+            let newState = Object.assign({}, state);
+            newState.fetchAppleNews = action.articles
+            newState.isAppleNewsLoading = false
             return {
                 ...newState
             }
@@ -60,7 +61,7 @@ export default function newsReducer(state = initialState, action) {
 
 
         case Actions.FETCH_APPLE_ERROR:{
-            var newState = Object.assign({}, state);
+            let newState = Object.assign({}, state);
             newState.errorOccured = true
             return {
                 ...newState
@@ -68,8 +69,8 @@ export default function newsReducer(state = initialState, action) {
         }
 
         case Actions.SEARCH_KEYWORD_SUCCESS:{
-            var newState = Object.assign({}, state);
-            newState.searchResult = action.articles
+            let newState = Object.assign({}, state);
+            newState.searchResult = [action.articles,action.status]
             return {
                 ...newState
             }

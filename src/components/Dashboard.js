@@ -9,43 +9,42 @@ import Error from './Error'
 
 export class DashBoard extends React.Component {
 
-    state={
-        errorOccured : false
+    state = {
+        errorOccured: false
     }
-    
+
     componentDidMount() {
         store.dispatch(actions.fetchData())
     }
 
     componentDidCatch() {
         this.setState({
-            errorOccured : true
+            errorOccured: true
         })
     }
 
     render() {
 
-                if (this.props.isloading) { 
-                return (
-                    <>
-                        <Loader />
-                    </>
-                )
-            } else if(this.state.errorOccured) {
-                return(
-                    <Error/>
-                )
-            }else{
-                return (
-                    <>
-                        <Navigator />
-                        <Card fetchedNews={this.props.fetchedData || []} />
-                    </>
-                )
-            }
+        if (this.props.isloading) {
+            return (
+                <>
+                    <Loader />
+                </>
+            )
+        } else if (this.state.errorOccured) {
+            return (
+                <Error />
+            )
+        } else {
+            return (
+                <>
+                    <Navigator />
+                    <Card fetchedNews={this.props.fetchedData || []} />
+                </>
+            )
+        }
     }
 }
-
 
 
 
@@ -54,18 +53,6 @@ const mapStateToProps = state => {
         currentState: state,
         fetchedData: state.fetchedData,
         isloading: state.isloading
-    };
-};          
-
-const mapDispatchToProps = dispatch => {
-    return {
-        // inc: () => {
-        //     dispatch(actions.incrementAsync());
-        // },
-
-        // dec: () => {
-        //     dispatch(actions.decrement());
-        // }
     };
 };
 

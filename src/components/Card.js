@@ -1,15 +1,8 @@
 import React from 'react'
-import {Badge} from 'react-bootstrap'
+import { Badge } from 'react-bootstrap'
+import {replaceFalseText, normalizeDate} from '../utils/utils'
 
 class Card extends React.Component {
-
-    normalizeDate(timestamp) {
-        let time = timestamp.split("T")
-        return (
-            "Updated on: " + time[0] + "      " + time[1].substr(0, time[1].length - 1)
-        )
-    }
-
     render() {
         return (
             <div className='news-container'>
@@ -25,12 +18,12 @@ class Card extends React.Component {
                                         <div class="card-body">
                                             <h5><a href={data.url} target="_blank" class="card-title">{data.title}</a></h5>
                                             <label class="card-text">{data.description}</label>
-                                            <p class="card-text">{data.content}</p>
+                                            <p class="card-text">{replaceFalseText( data.content || '')} <a href={data.url} target="_blank" class="card-title">read more</a></p>
                                             <Badge pill variant="light">
-                                                <p class="card-text"><small class="text-muted">{this.normalizeDate(data.publishedAt)}</small></p>
+                                                <p class="card-text"><small class="text-muted">{normalizeDate(data.publishedAt)}</small></p>
                                             </Badge>{' '}
                                             <Badge pill variant="light">
-                                                {"Author: "+data.author}
+                                                {"Author: " + data.author}
                                             </Badge>{' '}
                                         </div>
                                     </div>

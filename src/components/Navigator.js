@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Form, FormControl, Button, Badge, Nav } from 'react-bootstrap';
+import { Navbar, Form, Button, Badge, Nav } from 'react-bootstrap';
 import store from '../store/store';
 import * as actions from "../actions/Actions"
 import { Link } from 'react-router-dom'
@@ -15,9 +15,12 @@ class Navigator extends React.Component {
         this.handleAppleNewsClick = this.handleAppleNewsClick.bind(this)
         this.handleTechNewsClick = this.handleTechNewsClick.bind(this)
         this.state = {
-            currentKeyWord: ''
+            currentKeyWord: ""
         }
+
+
     }
+
 
     handleTechNewsClick() {
         store.dispatch(actions.fetchTechNews())
@@ -55,6 +58,9 @@ class Navigator extends React.Component {
     }
 
     render() {
+
+        let [searchResult , status ] = this.props.searchResult
+
         return (
             <>
                 <Navbar bg="dark" variant="dark">
@@ -77,10 +83,12 @@ class Navigator extends React.Component {
                 {
                     <div className='suggestion-container'>
                         {
-                            (this.props.searchResult || this.state.currentKeyWord.length > 0) ? <ListView serchData={this.props.searchResult} /> : null
+                            (this.state.currentKeyWord  || status !=="error") ? <ListView searchedData={searchResult || []} /> : null
                         }
                     </div>
                 }
+
+                
             </>
         )
     }
