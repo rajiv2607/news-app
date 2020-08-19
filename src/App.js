@@ -4,6 +4,10 @@ import TechNews from './components/TechNews'
 import AppleNews  from './components/AppleNews';
 import  DashBoard  from './components/Dashboard';
 
+/**
+ *  Responsible for Routing to different Components
+ * */ 
+
 class App extends React.Component {
   render() {
     return (

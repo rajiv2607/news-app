@@ -5,6 +5,11 @@ import Header from './Header'
 import Footer from './Footer'
 import Loader from './Loader'
 
+
+/**
+ * Component to render the news reated to Technology when we click on the "Tech news" from Navigator
+ */
+
 export class TechNews extends Component {
     render() {
 

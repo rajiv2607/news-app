@@ -10,5 +10,9 @@ export function normalizeDate(timestamp) {
 }
 
 export function replaceFalseText(str) {
-    return  str.replace(/\[.*?\]/g,"")
-     }
+    return str.replace(/\[.*?\]/g, "")
+}
+
+export function isError(status) {
+    return (status === "error") ? true : false
+}

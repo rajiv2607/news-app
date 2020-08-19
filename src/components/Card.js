@@ -2,6 +2,10 @@ import React from 'react'
 import { Badge } from 'react-bootstrap'
 import {replaceFalseText, normalizeDate} from '../utils/utils'
 
+
+/**
+ * Card Componnent is responsible for the Rendering to data in the form of Car with some manipulations
+ */
 class Card extends React.Component {
     render() {
         return (

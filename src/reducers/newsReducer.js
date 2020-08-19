@@ -1,6 +1,11 @@
 
 import * as Actions from "../actions/ActionConstants";
 
+/**
+ *  This is reducer with initial state , where we are changing the state and returning it to compoennt to render accordingly .
+ *  
+ */
+
 let initialState = {
     fetchedData: [],
     isloading: true,

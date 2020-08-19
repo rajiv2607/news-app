@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import ListView from './ListView';
 
+
+/**
+ * Component responsible for the rendering Nav bar and also the search results 
+ */
 class Navigator extends React.Component {
 
     constructor(props) {
@@ -18,7 +22,6 @@ class Navigator extends React.Component {
             currentKeyWord: ""
         }
 
-
     }
 
 
@@ -30,7 +33,7 @@ class Navigator extends React.Component {
         store.dispatch(actions.fetchAppleNews())
     }
 
-
+//TODO : Need to inplement debouncing while searching 
     debouncing(callback) {
         let timing = 0
         console.log("Dobouncung ")
@@ -54,7 +57,6 @@ class Navigator extends React.Component {
         })
 
         this.props.sentSearchReq(keyword)
-
     }
 
     render() {
@@ -69,17 +71,16 @@ class Navigator extends React.Component {
                         Top <Badge variant="light">Headlines</Badge>
                         <span className="sr-only">unread messages</span>
                     </Button>
-                    <Form inline>
-                        <input ref={this.search} type="text" placeholder="Search" class="mr-sm-2" id='searchBar' onChange={this.handleKeyWordSearch} />
-                        <Button variant="outline-light">Search</Button>
+                    <Form inline id='searchBar-container'>
+                        <input ref={this.search} type="text" placeholder="Search" class="mr-sm-2" id='searchBar' onKeyDown={this.handleKeyWordSearch} />
                     </Form>
 
                     <Nav className="mr-auto">
                         <Button variant="dark" ><Link to="/apple-news" onClick={this.handleAppleNewsClick}  > Apple News</Link></Button>
                         <Button variant="dark" ><Link to="/technology-news" onClick={this.handleTechNewsClick} > Tchnology News</Link></Button>
                     </Nav>
-
                 </Navbar>
+                
                 {
                     <div className='suggestion-container'>
                         {

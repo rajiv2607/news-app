@@ -7,7 +7,9 @@ import Loader from './Loader'
 export class AppleNews extends Component {
 
 
-
+/**
+ * Component to render the news reated to Apple when we click on the "Apple news" from Navigator
+ */
     render() {
 
         if (this.props.isAppleNewsLoading) {

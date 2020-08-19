@@ -1,6 +1,10 @@
 
 import { URL, TECH, APPLE , ANYTHING} from '../resources/Constants'
 
+
+/**
+ *  Methods to Fetch data from different End points
+ */
 export async function fetchData() {
     let articles
     try {

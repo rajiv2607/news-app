@@ -3,6 +3,9 @@ import newsReducer from '../reducers/newsReducer'
 import newsSaga from '../sagas/newsSaga'
 import createSagaMiddleware from 'redux-saga';
 
+/**
+ * 
+ */
 
 let sagaMiddleWare = createSagaMiddleware();
 

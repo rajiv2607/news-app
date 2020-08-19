@@ -2,21 +2,8 @@
     max-width: 69rem;
     margin-left: 20%;
     padding: 9px;
-
 }
 
-.left-container{
-    background-color: red;
-    display: flex;
-    flex-direction: column;
-    margin-left: 2.5rem;
-    min-height: 10rem;
-    margin-right: 2.5rem;
-    min-height: 60rem;
-    display: flex;
-    flex-direction: column;
-    width: 34rem;
-}
 .suggestion-container{
     position: absolute;
     border: 1px solid #d4d4d4;
@@ -25,33 +12,32 @@
     z-index: 99;
     left: 17%;
     right: 31%;
-    width: 55rem;
+    width: 42%;
+    display: flex;
 }
 
 
 .search-results{
     text-decoration: none;
     color: black;
+    display: flex;
 
     &:hover{
         color: black;
     }
 }
 .search{
-    width: 55rem;
+    width: 100%;
     background: #e9e9e9;
     padding: 3px;
     border: 1px solid black;
+
 
     &:hover{
         background: white;
     }
 }
-// width: 19rem;
-//     left: 81%;
-//     position: absolute;
-//     top: 10%;
-//     left: 78rem;
+
 
 .card-container {
     display: flex;
@@ -75,23 +61,27 @@
     margin: 3px;
     margin-bottom: 3px;
     }
-   .fa-cloud-rain {
-    font-size: 150px;
-    background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+
   
   #loader {
-      width: 100%;
-      height: 100%;
-      color: black;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 40%;
+    top: 35%;
   }
 
-  #searchBar{
-    margin: 2px 1rem 3px;
-    width: 55rem;
+  #searchBar-container{
+    width: 58%;
+    #searchBar{
+        display: flex;
+        padding: 4px;
+        border-radius: 17px;
+        width: 76%;
+        margin-left: 8px;
+      }
   }
+ 
   p {
     margin: 0;
     color: #252020;
@@ -102,11 +92,17 @@
     margin-top: 10px;
   }
 
- @media only screen and (max-width: 1024px) {
-    .card-container {
+ @media only screen and (max-width: 360px) {
+    .navbar-brand{
+        display: none;
+    }
+
+    .badge {
+    .badge-light{
         display: none;
     }
  }
+}
 
  .headers-view {
     font-size: large;
