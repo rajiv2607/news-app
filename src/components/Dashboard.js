@@ -39,7 +39,7 @@ export class DashBoard extends React.Component {
             return (
                 <>
                     <Navigator />
-                    <Card fetchedNews={this.props.fetchedData || []} />
+                    <Card fetchedNews={this.props.fetchedData} />
                 </>
             )
         }
